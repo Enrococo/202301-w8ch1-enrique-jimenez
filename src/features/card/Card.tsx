@@ -4,14 +4,17 @@ import { CardStyled } from './CardStyled';
 
 interface CardProps {
   character: CharacterResponse;
+  id: number;
 }
 
-export const Card: FC<CardProps> = ({ character }) => {
+export const Card: FC<CardProps> = ({ character, id }) => {
   return (
     <CardStyled>
       <div className="image-container">
         <img
-          src={character.thumb}
+          src={`https://starwars-visualguide.com/assets/img/characters/${
+            id + 1
+          }.jpg`}
           className={'image'}
           alt={`${character.name}-pic`}
         />

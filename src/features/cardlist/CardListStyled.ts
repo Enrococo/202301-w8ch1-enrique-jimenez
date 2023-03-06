@@ -1,0 +1,24 @@
+import styled from 'styled-components';
+
+export const CardListStyled = styled.div`
+  .robots__container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+    padding-top: 2rem;
+    padding-bottom: 4rem;
+  }
+
+  .robots__button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Orbitron', sans-serif;
+    color: #ffe81f;
+    background-color: inherit;
+    border: none;
+    font-size: 1rem;
+  }
+`;
