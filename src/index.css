@@ -11,39 +11,39 @@ ul {
 @font-face {
   font-family: "Starjedi";
   src: local("Starjedi"),
-    url(../public/assets/fonts/Starjedi.ttf) format(truetype);
+    url(../public/assets/fonts/Orbitron.ttf) format(truetype);
 }
 
 @font-face {
   font-family: "Starjhol";
   src: local("Starjhol"),
-    url(../public/assets/fonts/Starjedi.ttf) format(truetype);
+    url(../public/assets/fonts/Starjhol.ttf) format(truetype);
 }
 
 @font-face {
   font-family: "Starjout";
   src: local("Starjout"),
-    url(../public/assets/fonts/Starjedi.ttf) format(truetype);
+    url(../public/assets/fonts/Starjout.ttf) format(truetype);
 }
 
 @font-face {
   font-family: "Strjmono";
   src: local("Strjmono"),
-    url(../public/assets/fonts/Starjedi.ttf) format(truetype);
+    url(../public/assets/fonts/Strjmono.ttf) format(truetype);
 }
 
 @font-face {
   font-family: "Stjldbl1";
   src: local("Stjldbl1"),
-    url(../public/assets/fonts/Starjedi.ttf) format(truetype);
+    url(../public/assets/fonts/Stjldbl1.ttf) format(truetype);
 }
 @font-face {
   font-family: "Stjldbl2";
   src: local("Stjldbl2"),
-    url(../public/assets/fonts/Starjedi.ttf) format(truetype);
+    url(../public/assets/fonts/Stjldbl2.ttf) format(truetype);
 }
 @font-face {
   font-family: "Orbitron";
   src: local("Orbitron"),
-    url(../public/assets/fonts/Starjedi.ttf) format(truetype);
+    url(../public/assets/fonts/Orbitron.ttf) format(truetype);
 }
