@@ -14,7 +14,7 @@ const CardList = () => {
   }, [dispatch]);
 
   return (
-    <CardListStyled>
+    <CardListStyled role="cardlist">
       <ul className="robots__container">
         {characters.map((character: CharacterResponse, i) => (
           <li key={character.name + 'list'}>

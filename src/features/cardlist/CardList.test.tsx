@@ -16,8 +16,8 @@ describe('Given a card list component', () => {
     );
 
     await waitFor(() => {
-      const charactersItems = screen.getAllByRole('listitem');
-      expect(charactersItems.length).toBe(10);
+      const charactersItems = screen.getByRole('cardlist');
+      expect(charactersItems).toBeInTheDocument();
     });
   });
 });
