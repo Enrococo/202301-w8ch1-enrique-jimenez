@@ -1,16 +1,26 @@
 import { FC } from 'react';
-import { CharacterResponse } from '../../model/character-model';
+import { Character } from '../../model/character-model';
 import { CardStyled } from './CardStyled';
 
+import useSound from 'use-sound';
+import React from 'react';
+
 interface CardProps {
-  character: CharacterResponse;
+  character: Character;
   id: number;
 }
 
 export const Card: FC<CardProps> = ({ character, id }) => {
+  const soundUrl = '../../assets/lightsaber.mp3';
+  const [play, { stop }] = useSound(soundUrl, { volume: 0.5 });
+
   return (
     <CardStyled>
-      <div className="image-container">
+      <div
+        className="image-container"
+        onMouseEnter={() => stop()}
+        onMouseLeave={() => play()}
+      >
         <img
           src={`https://starwars-visualguide.com/assets/img/characters/${
             id + 1

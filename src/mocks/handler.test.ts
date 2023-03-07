@@ -1,5 +1,5 @@
 import { setupServer } from 'msw/node';
-import { CharacterMock } from './character-mock';
+import { characterResponseMock } from './character-response-mock';
 
 import { handlers } from './handlers';
 
@@ -22,6 +22,6 @@ describe('GET /api/people', () => {
     const response = await fetch('https://swapi.dev/api/people/');
     const data = await response.json();
     expect(response.status).toEqual(200);
-    expect(data).toEqual([CharacterMock]);
+    expect(data).toEqual(characterResponseMock);
   });
 });
