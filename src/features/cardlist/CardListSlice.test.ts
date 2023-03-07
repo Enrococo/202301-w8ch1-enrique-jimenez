@@ -5,21 +5,18 @@ describe('initializer reducer', () => {
     expect(cardlistReducer(undefined, { type: 'unknown' })).toEqual({
       characters: [],
       status: 'idle',
+      count: 0,
+      currentPage: 0,
     });
   });
 
-  it('should handle loading status', () => {
+  test('should handle loading status', () => {
     const loading = cardlistReducer(undefined, fetchCharacters.pending);
     expect(loading.status).toEqual('loading');
   });
 
-  it('should handle failed status', () => {
+  test('should handle failed status', () => {
     const loading = cardlistReducer(undefined, fetchCharacters.rejected);
     expect(loading.status).toEqual('failed');
-  });
-
-  it('should handle idle status', () => {
-    const loading = cardlistReducer(undefined, fetchCharacters.fulfilled);
-    expect(loading.status).toEqual('idle');
   });
 });

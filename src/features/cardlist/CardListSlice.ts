@@ -1,51 +1,52 @@
-import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { getCharactersList } from './CardListAPI';
 import { RootState } from '../../app/store';
-import { CharacterResponse } from '../../model/character-model';
+import { CharacterState } from '../../model/character-model';
+import { APIStatus } from '../../shared/models/apistatus';
 
-export interface CardListState {
-  characters: CharacterResponse[];
-  status: 'idle' | 'loading' | 'failed';
-}
+const STATE_NAME = 'cardList';
 
-const initialState: CardListState = {
+const initialState: CharacterState = {
   characters: [],
-  status: 'idle',
+  status: APIStatus.IDLE,
+  currentPage: 0,
+  count: 0,
 };
 
 export const fetchCharacters = createAsyncThunk(
-  'cardList/fetchCharacters',
-  async () => {
-    const response = await getCharactersList();
-    return response;
+  `${STATE_NAME}/fetchCharacters`,
+  async (nextPage: number) => {
+    const response = await getCharactersList(nextPage);
+    return {
+      ...response,
+      currentPage: nextPage,
+    };
   }
 );
 
 export const cardListSlice = createSlice({
-  name: 'cardList',
-  initialState,
+  name: STATE_NAME,
+  initialState: initialState,
 
   reducers: {},
 
   extraReducers: (builder) => {
     builder
-      .addCase(fetchCharacters.pending, (state: { status: string }) => {
-        state.status = 'loading';
+      .addCase(fetchCharacters.pending, (state) => {
+        state.status = APIStatus.LOADING;
       })
-      .addCase(
-        fetchCharacters.fulfilled,
-        (state, action: PayloadAction<CharacterResponse[]>) => {
-          state.status = 'idle';
-          state.characters = action.payload;
-        }
-      )
+      .addCase(fetchCharacters.fulfilled, (state, action) => {
+        state.status = APIStatus.IDLE;
+        state.characters = action.payload.characters;
+        state.count = action.payload.count;
+        state.currentPage = action.payload.currentPage;
+      })
       .addCase(fetchCharacters.rejected, (state) => {
-        state.status = 'failed';
+        state.status = APIStatus.ERROR;
       });
   },
 });
 
-export const selectCharacters = (state: RootState) => state.cardList.characters;
-export const selectStatus = (state: RootState) => state.cardList.status;
+export const selectCharacters = (state: RootState) => state.cardList;
 
 export default cardListSlice.reducer;
